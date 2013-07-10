@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710185125) do
+ActiveRecord::Schema.define(:version => 20130710195933) do
 
   create_table "computers", :force => true do |t|
     t.string   "computer_model"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130710185125) do
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
     t.integer  "district_id"
+    t.integer  "region_id"
   end
 
   add_index "computers", ["station_id"], :name => "index_computers_on_station_id"
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130710185125) do
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
     t.integer  "district_id"
+    t.integer  "region_id"
   end
 
   add_index "devices", ["district_id"], :name => "index_devices_on_district_id"
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130710185125) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "region_id"
   end
 
   create_table "modems", :force => true do |t|
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130710185125) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "district_id"
+    t.integer  "region_id"
   end
 
   add_index "modems", ["station_id"], :name => "index_modems_on_station_id"
@@ -90,15 +94,23 @@ ActiveRecord::Schema.define(:version => 20130710185125) do
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
     t.integer  "district_id"
+    t.integer  "region_id"
   end
 
   add_index "printers", ["station_id"], :name => "index_printers_on_station_id"
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "stations", :force => true do |t|
     t.string   "name"
     t.integer  "district_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "region_id"
   end
 
   add_index "stations", ["district_id"], :name => "index_stations_on_district_id"

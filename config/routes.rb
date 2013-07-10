@@ -1,5 +1,8 @@
 Practic::Application.routes.draw do
 
+  resources :regions
+
+
   resources :districts
 
 

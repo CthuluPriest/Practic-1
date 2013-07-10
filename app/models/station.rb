@@ -1,5 +1,5 @@
 class Station < ActiveRecord::Base
-  attr_accessible :name, :district_id
+  attr_accessible :name, :district_id, :region_id
 
   has_many :computers, :dependent => :destroy
   has_many :devices, :dependent => :destroy
@@ -8,6 +8,7 @@ class Station < ActiveRecord::Base
   validates :name, :presence => :true
 
   belongs_to :district
+  belongs_to :region
 
   def self.search(search)
     if search
