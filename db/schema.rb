@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220193027) do
+ActiveRecord::Schema.define(:version => 20130710185125) do
 
   create_table "computers", :force => true do |t|
     t.string   "computer_model"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130220193027) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
+    t.integer  "district_id"
   end
 
   add_index "computers", ["station_id"], :name => "index_computers_on_station_id"
@@ -45,9 +46,17 @@ ActiveRecord::Schema.define(:version => 20130220193027) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
+    t.integer  "district_id"
   end
 
+  add_index "devices", ["district_id"], :name => "index_devices_on_district_id"
   add_index "devices", ["station_id"], :name => "index_devices_on_station_id"
+
+  create_table "districts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "modems", :force => true do |t|
     t.string   "model"
@@ -61,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130220193027) do
     t.integer  "station_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "district_id"
   end
 
   add_index "modems", ["station_id"], :name => "index_modems_on_station_id"
@@ -79,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130220193027) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "station_id"
+    t.integer  "district_id"
   end
 
   add_index "printers", ["station_id"], :name => "index_printers_on_station_id"

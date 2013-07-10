@@ -1,5 +1,8 @@
 Practic::Application.routes.draw do
 
+  resources :districts
+
+
   get "static_pages/about"
 
   get 'admin' => 'admin/index'
