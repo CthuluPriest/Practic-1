@@ -1,23 +1,76 @@
-<h1>Listing regions</h1>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+ $('.spoiler_links').click(function(){
+  $(this).parent().children('div.spoiler_body').toggle('normal');
+  return false;
+ });
+});
+</script>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<style type="text/css">
+ .spoiler_body {display:none; cursor:pointer;}
+</style>
 
-<% @regions.each do |region| %>
+
+
+<br/>
+
+  <div>
+     <a href="" class="spoiler_links">Республика</a>
+     <div class="spoiler_body">
+
+
+          <% @regions.each do |region| %>
+                      <a href="" class="spoiler_links"> .....<%= region.name %>   область</a>
+                        <div class="spoiler_body">
+
+
+                            
+                                <% @districts.find_all{|a|a.region_id == region.id}.each do |district| %>
+                                <a href="" class="spoiler_links"> ..........<%=  district.name %> район</a>
+                                  <div class="spoiler_body"
+
+                                   
+
+
+
+                                                     
+
+                                    
+                                    </br>
+                                  </div>
+                                </br>
+                                <% end %>
+                        
+
+
+
+                        </div>
+    
+          <% end %>
+
+     </div>
+  </div>
+<!--<table class="table table-bordered">
+  <thead>
   <tr>
-    <td><%= region.name %></td>
-    <td><%= link_to 'Show', region %></td>
-    <td><%= link_to 'Edit', edit_region_path(region) %></td>
-    <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <th>Название</th>
+    <th>Действия</th>
   </tr>
-<% end %>
-</table>
+  </thead>
+  <tbody>
+    <% @regions.each do |region| %>
+      <tr>
+        <td><%= region.name %></td>
+        <td><%= link_to 'Show', region %></td>
+        <td><%= link_to 'Edit', edit_region_path(region) %></td>
+        <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+       </tbody>
+    <% end %>
+</table>-->
 
 <br />
 
-<%= link_to 'New Region', new_region_path %>
+<%= link_to 'Создать область', new_region_path %>
