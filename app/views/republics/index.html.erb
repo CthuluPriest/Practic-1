@@ -28,15 +28,18 @@ $(document).ready(function(){
 
                             
                                 <% @districts.find_all{|a|a.region_id == region.id}.each do |district| %>
+                                <div>
                                 <a href="" class="spoiler_links"> ------><%=  district.name %> район</a>
                                   <div class="spoiler_body">
 
 
                                         <% @stations.find_all{|a|a.district_id == district.id}.each do |station| %>
+                                        <div>
                                         <a href="" class="spoiler_links"> ------------><%=  station.name %></a>
                                           <div class="spoiler_body">
                                           lol
                                           </div>
+                                        </div>
 
                                         <% end %>
 
@@ -47,9 +50,9 @@ $(document).ready(function(){
                                                      
 
                                     
-                                    </br>
+                                    
                                   </div>
-                                </br>
+                                </div>
                                 <% end %>
                         
 
